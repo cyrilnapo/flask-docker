@@ -39,7 +39,7 @@ jobs:
         with:  # Avec ces paramètres
           registry: ghcr.io  # URL du registre
           username: ${{ github.actor }}  # Nom d'utilisateur GitHub
-          password: ${{ secrets.GITHUB_TOKEN }}  # `GITHUB_TOKEN` pour l'authentification
+          password: ${{ secrets.TOKEN }}  # `GITHUB_TOKEN` pour l'authentification
 
       - name: get metadata  # Récupère les métadonnées pour Docker
         id: metadata  # ID pour cette étape
@@ -59,6 +59,6 @@ jobs:
           context: .  # Contexte pour la construction Docker
           cache-from: type=gha  # Utilise le cache GitHub Actions
           cache-to: type=gha,mode=max  # Enregistre le cache pour les utilisations futures
-      
+
 
 
