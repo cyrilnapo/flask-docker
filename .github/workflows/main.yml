@@ -3,7 +3,7 @@ on:
   push:
   workflow_dispatch:
 jobs:
- lint:
+ setup-environment:
      runs-on: ubuntu-latest
      steps:
       - name: Checkout
@@ -15,13 +15,13 @@ jobs:
       - name: Install requirements
         run: pip install --quiet --upgrade --requirement requirements.txt
 
+ lint-code:
+     runs-on: ubuntu-latest
+     steps:
       - name: Lint code
         run: |
           flake8 --ignore=E501,E231 *.py
           pylint --errors-only --disable=C0301 --disable=C0326 *.py
-
-
-
       
 
 
