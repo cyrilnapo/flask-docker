@@ -1,0 +1,27 @@
+name: Workflow
+on:
+  push:
+  workflow_dispatch:
+jobs:
+ lint:
+     runs-on: ubuntu-latest
+     steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install python
+        uses: actions/setup-python@latest
+
+      - name: Install requirements
+        run: pip install --quiet --upgrade --requirement requirements.txt
+
+      - name: Lint code
+        run: |
+          flake8 --ignore=E501,E231 *.py
+          pylint --errors-only --disable=C0301 --disable=C0326 *.py
+
+
+
+      
+
+
